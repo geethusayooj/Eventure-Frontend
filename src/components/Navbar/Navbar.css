@@ -1,3 +1,4 @@
+
 .search-input {
   padding: 5px;
   font-size: 14px;
@@ -24,10 +25,18 @@
   display: flex;
   align-items: center;
 }
-.Navbar {
-  margin-top: 10px;
-  margin-bottom: 550px;
-  margin-right: 300px;
+.logout-button {
+  margin-left: 20px;
+  padding: 8px 16px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} 
+
+.logout-button:hover {
+  background-color: #ff7875;
 }
 .logout-button {
   margin-left: 20px;
@@ -37,8 +46,8 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} 
 
 .logout-button:hover {
   background-color: #ff7875;
-}
+}  

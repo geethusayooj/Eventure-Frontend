@@ -13,20 +13,15 @@ function EventsByCategory({ category }) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/`)
+      .get(`${API_URL}/api/api/events/${category}`)
       .then((response) => {
-        console.log("API response:", response.data);
-        const datas = Object.keys(response.data).map( (eventId) => {
-          return {
-            id: eventId,
-            ...response.data[eventId]
-          }
-        });
-
-        const filteredData = datas.filter((data) => data.category === category);
+       console.log("API response:", response.data);
+        
+        const filteredData = response.data.filter((event) => event.category === category);
+        console.log(filteredData);
         setEvents(filteredData.toReversed());
       })
-      .catch((e) => console.log("Error getting products from the API...", e));
+      .catch((e) => console.log("Error getting events from the API...", e));
     return () => {
         setEvents([]);
     };
@@ -35,9 +30,8 @@ function EventsByCategory({ category }) {
    
     <div className="EventsByCategory card-list">
      
-      {events &&
-      
-        products.map((eventDetails) => {
+     {events && events.length > 0 ? (
+        events.map((eventDetails) => {
           return (
 
             <Link className="link" to={`/event/${eventDetails.id}`} key={eventDetails.id}>
@@ -61,7 +55,10 @@ function EventsByCategory({ category }) {
             </Card>
             </Link>
           );
-        })}
+        })
+      ) : (
+        <Typography>No events found for this category</Typography>
+      )}
     </div>
   );
 }

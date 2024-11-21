@@ -1,7 +1,7 @@
 import EventsByCategory from "../EventsByCategory/EventsByCategory";
 
 function Music() {
-  return <EventsByCategory category={"music"} />
+  return <EventsByCategory category={"Music"} />
 }
 
 export default Music;
