@@ -10,11 +10,11 @@ body {
 }
 
 .loginform {
-  background-color: white(206, 202, 202, 0.048);
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  width: 300px;
+  
   text-align: center;
 }
 
@@ -25,8 +25,9 @@ h1 {
   text-align: center;
 }
 
-input {
-  width: 100%;
+.inputlogin{
+  
+  
   padding: 12px;
   margin: 10px 0;
   border: 1px solid #ccc;
@@ -36,12 +37,12 @@ input {
   transition: border-color 0.3s ease;
 }
 
-input:focus {
+.inputlogin:focus {
   border-color: #4caf50;
   outline: none;
 }
 
-button {
+.loginbutton {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -54,7 +55,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.loginbutton:hover {
   background-color: #45a049;
 }
 

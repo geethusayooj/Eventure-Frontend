@@ -26,7 +26,7 @@ const Login = () => {
         authenticateUser();
         setEmail(""); // Clear email field
         setPassword(""); // Clear password field
-        navigate("/EventListPage"); // Redirect to dashboard
+        navigate("/home"); // Redirect to dashboard
       } else {
         alert(data.message || "Invalid credentials");
       }
@@ -43,7 +43,7 @@ const Login = () => {
     <div className="loginform">
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
-        <input
+        <input className="inputlogin"
           type="email"
           placeholder="Email"
           value={email}
@@ -51,7 +51,7 @@ const Login = () => {
           required
         />{" "}
         <br />
-        <input
+        <input className="inputlogin"
           type="password"
           placeholder="Password"
           value={password}
@@ -59,7 +59,7 @@ const Login = () => {
           required
         />
         <br />
-        <button type="submit">Login</button>
+        <button className="loginbutton" type="submit">Login</button>
       </form>
       <p>
         Don't have an account? <a href="/signup">Signup</a>

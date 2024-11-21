@@ -9,12 +9,12 @@ body {
   height: 100vh;
 }
 
-.form-container {
+.signupform{
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  width: 100px;
+ 
   text-align: center;
 }
 
@@ -24,8 +24,8 @@ h1 {
   margin-bottom: 20px;
 }
 
-input {
-  width: 100%;
+.inputsignup {
+  
   padding: 12px;
   margin: 10px 0;
   border: 1px solid #ccc;
@@ -35,24 +35,24 @@ input {
   transition: border-color 0.3s ease;
 }
 
-input:focus {
+.inputsignup:focus {
   border-color: #4caf50;
   outline: none;
 }
 
-button {
+.signupbutton {
   width: 100%;
   padding: 12px;
   background-color: #4caf50;
   color: white;
   font-size: 16px;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.signupbutton:hover {
   background-color: #45a049;
 }
 

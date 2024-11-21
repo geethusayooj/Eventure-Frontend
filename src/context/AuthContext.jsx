@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 export const AuthProviderWrapper = ({ children }) => {
   const [user, setUser] = useState({});
-  const [isAuthenticated, setisAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated ] = useState(false)
   const [token, setToken] = useState()
 
   const authenticateUser = () => {           //  <==  ADD  
@@ -25,31 +25,38 @@ export const AuthProviderWrapper = ({ children }) => {
        // Update state variables        
         setToken(storedToken)
         setUser(user);  
-        setisAuthenticated(true)     
+        setIsAuthenticated(true)     
       })
       .catch((error) => {
         // If the server sends an error response (invalid token) 
         // Update state variables         
         setToken()
         setUser(null); 
-        setisAuthenticated(false)        
+        setIsAuthenticated(false)        
       });      
     } else {
       // If the token is not available (or is removed)
         setToken()
         setUser(null);
-        setisAuthenticated(false)       
+        setIsAuthenticated(false)       
     }   
   }
- 
+  // Log out the user
+  const logout = () => {
+    setUser({});
+    setToken(null);
+    setIsAuthenticated(false);
+    localStorage.removeItem('authToken');  // Remove token from localStorage
+  };
+
   
   useEffect(() => {                
-    authenticateUser()
+  authenticateUser()
   }, []);
  
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated , token, authenticateUser}}>
+    <AuthContext.Provider value={{ user, isAuthenticated , token, authenticateUser,  logout }}>
       {children}
     </AuthContext.Provider>
   );
