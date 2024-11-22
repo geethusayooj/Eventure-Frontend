@@ -1,16 +1,17 @@
-.container {
+.EditEventPage {
     width: 600px;
     max-width: calc(100% - 40px);
     margin: 50px auto;
-    padding: 5px;
+    padding: 25px;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-sizing: border-box;
   }
   
   @media screen and (max-width: 800px){
-    .container {
+    .EditEventPage {
       width: calc(100vw - 50px);
       max-width: calc(100% - 50px);
     }
@@ -30,56 +31,41 @@
   }
   
   .form-group {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     text-align: left;
     display: flex;
     flex-direction: column;
   }
   
   label {
-    margin: 5px 0;
+    margin: 3px 0;
     font-weight: bold;
     color: black;
   }
+  
   input,
   textarea,
   select {
-    padding: 12px;
-    margin-top: 5px;
+    padding: 10px;
+    margin-top: 3px;
     border: 1px solid black;
     border-radius: 5px;
     font-size: 16px;
     transition: border 0.3s;
   }
   
-  input textarea,
-  select {
-    border: 2px solid black;
-  }
-  
   textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
     border-color: black;
   }
   
-   .createbutton{
+  .editbutton {
     padding: 12px;
-    margin: 0px 200px;
+    margin: 20px auto;
     background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
   }
-  
-  .createbutton:hover {
-    background-color: black;
-    transform: translateY(-2px);
-  }
-  
-  .createbutton:active {
-    transform: translateY(0);
-  } 

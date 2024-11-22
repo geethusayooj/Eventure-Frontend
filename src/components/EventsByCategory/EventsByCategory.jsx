@@ -34,7 +34,7 @@ function EventsByCategory({ category }) {
         events.map((eventDetails) => {
           return (
 
-            <Link className="link" to={`/event/${eventDetails._id}`}>
+            <Link className="link" to={`/events/${eventDetails._id}`}>
 
             <Card
               key={eventDetails._id}

@@ -154,7 +154,7 @@ function CreateEventPage(props) {
           />
         </div>
 
-        <button type="submit">Create</button>
+        <button className="createbutton" type="submit">Create</button>
       </form>
     </div>
   );

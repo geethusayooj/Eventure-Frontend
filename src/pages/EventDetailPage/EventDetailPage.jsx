@@ -51,7 +51,7 @@ function EventDetailPage() {
           <Link to="/home">
             <button className="detailpageButton">Back </button>
           </Link>
-          <Link className="detailpageButton" to={`/events/${eventId}`}>
+          <Link className="detailpageButton" to={`/events/${eventId}/edit`}>
             <button>Edit</button>
           </Link>
 
