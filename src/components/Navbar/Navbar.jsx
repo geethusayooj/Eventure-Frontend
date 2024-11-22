@@ -6,6 +6,13 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import EventsByCategory from "../EventsByCategory/EventsByCategory";
 import { AuthContext } from "../../context/AuthContext";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import HomeIcon from '@mui/icons-material/Home';
+import WorkIcon from '@mui/icons-material/Work';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import CreateIcon from '@mui/icons-material/Create';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Navbar({ onSearch }) {
   const [selectedTab, setSelectedTab] = useState("home");
@@ -25,7 +32,8 @@ function Navbar({ onSearch }) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchInput);
+    onSearch(searchInput); 
+    
   };
 
   // handleLogout function:
@@ -49,35 +57,35 @@ function Navbar({ onSearch }) {
         sx={{ height: "100%" }}
         classes={{ indicator: "indicator" }}
       >
-        <Tab classes={{ root: "tab" }} value={"/home"} label="Home" />
+        <Tab icon={<HomeIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/home"} label="Home" />
          
-        <Tab classes={{ root: "tab" }} value={"/music"} label="Music" />
+        <Tab icon={<MusicNoteIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/music"} label="Music" />
          
-        <Tab classes={{ root: "tab" }} value={"/job"} label="Job" />
+        <Tab icon={<WorkIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/job"} label="Job" />
         
-        <Tab classes={{ root: "tab" }} value={"/sports"} label="Sports" />
+        <Tab icon={<SportsGymnasticsIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/sports"} label="Sports" />
         
-        <Tab classes={{ root: "tab" }} value={"/food"} label="Food" />
+        <Tab icon={<FastfoodIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/food"} label="Food" />
         
-        <Tab classes={{ root: "tab" }} value={"/events/create"} label="CREATE" />
+        <Tab icon={<CreateIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/events/create"} label="CREATE" />
         
-        <Tab
+        
+        <form onSubmit={handleSearchSubmit} className="search-form">
+        <input
+          type="text"
+          placeholder="Search event here..."
+          value={searchInput}
+          onChange={handleInputChange}
+          className="search-input"
+        />
+        <button type="submit" className="search-button">Search</button>
+      </form>
+      <Tab className= "logout" icon={<LogoutIcon />}
           classes={{ root: "tab" }}
           label="Logout"
           value={"/"}
           onClick={handleLogout} />
         
-        <form onSubmit={handleSearchSubmit} className="search-form">
-          <input
-            type="text"
-            placeholder="Search products..."
-            onChange={(e) => onSearch(e.target.value)} 
-            className="search-input"
-          />
-          <button type="submit" className="search-button">
-            Search
-          </button>
-        </form>
       </Tabs>
     </nav>
   );

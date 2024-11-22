@@ -11,9 +11,20 @@ import Food from "./components/Food/Food";
 import Sports from "./components/Sports/Sports";
 import Job from "./components/Job/Job";
 import EventListPage from "./pages/EventListPage/EventListPage";
+import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
+import CreateEventPage from "./pages/CreateEventPage/CreateEventPage";
 
 function App() {
+  const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const createEvents = (eventDetails) => {
+    const newEvent = {
+      ...eventDetails,
+    };
+    setEvents((prevEvents) => [newEvent, ...prevEvents]);
+  };
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -44,6 +55,11 @@ function App() {
           <Route path="/job" element={<Layout><Job /></Layout>} />
           <Route path="/sports" element={<Layout><Sports /></Layout>} />
           <Route path="/food" element={<Layout><Food /></Layout>} />
+          <Route path="/events/:eventId" element={<EventDetailPage />} />
+          <Route
+          path="/events/create"
+          element={<CreateEventPage callbackToCreate={createEvents} />}
+        />
           
         </Routes>
       </Router>

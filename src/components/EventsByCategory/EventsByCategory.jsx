@@ -13,7 +13,7 @@ function EventsByCategory({ category }) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/api/events/${category}`)
+      .get(`${API_URL}/api/api/events/category/${category}`)
       .then((response) => {
        console.log("API response:", response.data);
         
@@ -34,10 +34,11 @@ function EventsByCategory({ category }) {
         events.map((eventDetails) => {
           return (
 
-            <Link className="link" to={`/event/${eventDetails.id}`} key={eventDetails.id}>
+            <Link className="link" to={`/event/${eventDetails._id}`}>
+
             <Card
-              key={eventDetails.id}
-              // sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
+              key={eventDetails._id}
+              // sx={{ maxWidth: 375, minWidth: 375, borderRadius: 7 }}
             >
               <CardMedia
                 sx={{ height: 250, backgroundSize: "contain" }}
@@ -49,7 +50,7 @@ function EventsByCategory({ category }) {
                   {eventDetails.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {eventDetails.price}
+                  {eventDetails.location}
                 </Typography>
               </CardContent>
             </Card>

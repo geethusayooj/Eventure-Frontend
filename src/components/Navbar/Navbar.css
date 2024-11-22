@@ -24,6 +24,7 @@
 .search-form {
   display: flex;
   align-items: center;
+  margin-left: 440px;
 }
 .logout-button {
   margin-left: 20px;
@@ -51,3 +52,6 @@
 .logout-button:hover {
   background-color: #ff7875;
 }  
+.logout{
+  margin-left: auto;
+}

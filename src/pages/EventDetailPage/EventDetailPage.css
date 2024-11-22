@@ -1,0 +1,22 @@
+.eventDetailsPage {
+    display: flex;
+  justify-content: center;
+    padding: 40px 30px;
+  }
+  .imageofevent {
+    width: 30%;
+    height: 40%;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    box-sizing: border-box; 
+  }
+  .eventdetails {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .detailpageButton {
+    padding: 10px;
+    margin: 10px 10px;
+  }

@@ -31,9 +31,9 @@ function EventListPage({ searchQuery }) {
             )
           .map((eventDetails) => {
             return (
-              <Link className="link" to={`/events${eventDetails.id}`}>
+              <Link className="link" to={`/events/${eventDetails._id}`}>
                 <Card
-                  key={eventDetails.id}
+                  key={eventDetails._id}
                   sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
                 >
                   <CardMedia
@@ -54,7 +54,7 @@ function EventListPage({ searchQuery }) {
                       variant="body2"
                       sx={{ color: "text.secondary" }}
                     >
-                      {eventDetails.price}
+                      {eventDetails.location}
                     </Typography>
                   </CardContent>
                 </Card>
