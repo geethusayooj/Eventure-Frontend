@@ -14,6 +14,8 @@ import EventListPage from "./pages/EventListPage/EventListPage";
 import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import CreateEventPage from "./pages/CreateEventPage/CreateEventPage";
 import EditEventPage from "./pages/EditEventPage/EditEventPage";
+import BookedInfoPage from "./pages/BookedInfoPage/BookedInfoPage"
+
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -59,6 +61,8 @@ function App() {
           <Route path="/events/:eventId" element={<EventDetailPage />} />
           <Route path="/events/create" element={<CreateEventPage callbackToCreate={createEvents} />} />
           <Route path="/events/:eventId/edit" element={<EditEventPage />} />
+          <Route path="/events/bookings" element={<BookedInfoPage />} />
+          <Route path="/favourites" element={<EventDetailPage />} />
         
       </Routes>
         
