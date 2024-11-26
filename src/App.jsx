@@ -14,7 +14,7 @@ import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import CreateEventPage from "./pages/CreateEventPage/CreateEventPage";
 import EditEventPage from "./pages/EditEventPage/EditEventPage";
 import BookedInfoPage from "./pages/BookedInfoPage/BookedInfoPage";
-import FavouritePage from "./components/favouritePage/favouritePage";
+
 
 
 function App() {
