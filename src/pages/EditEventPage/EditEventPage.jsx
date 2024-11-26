@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./EditEventPage.css";
 import { API_URL } from "../../config/api";
+import { AuthContext } from "../../context/AuthContext";
+
 
 function EditEventPage() {
   const [title, setTitle] = useState("");
@@ -13,7 +15,7 @@ function EditEventPage() {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
   const [availableTickets, setAvailableTickets] = useState("");
-
+  const { token } = useContext(AuthContext);
   const { eventId } = useParams();
   const navigate = useNavigate();
 
@@ -49,7 +51,12 @@ function EditEventPage() {
       availableTickets: availableTickets
     };
 
-    axios.put(`${API_URL}/api/api/events/${eventId}`, newDetails)
+    axios.put(`${API_URL}/api/api/events/${eventId}`, newDetails, {
+        
+      headers: {
+        Authorization: `Bearer ${token}`, 
+      }
+  })
 
 
       .then((response) => {

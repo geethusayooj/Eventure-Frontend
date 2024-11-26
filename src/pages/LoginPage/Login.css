@@ -8,12 +8,12 @@ body {
 
 .loginContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
   height: 100vh;
   width: 100%;
   align-items: center;
+  gap: 80px
 }
 
 .loginform {
@@ -23,11 +23,14 @@ body {
   padding: 40px;
 }
 
-h1 {
-  font-size: 23px;
+.loginLeft h1 {
+  font-size: 40px;
   color: #333;
   margin-bottom: 20px;
-  text-align: center;
+ 
+}
+.loginLeft p{
+  font-size:20px
 }
 
 .inputlogin {
@@ -64,7 +67,7 @@ h1 {
 
 /* Link Style for Signup */
 p {
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
   text-align: center;
 }
@@ -78,3 +81,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.coverImage {
+  width: 100%;
+  height: auto;
+}
+

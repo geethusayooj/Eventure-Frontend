@@ -14,7 +14,7 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import CreateIcon from '@mui/icons-material/Create';
 import LogoutIcon from '@mui/icons-material/Logout';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 
 function Navbar({ onSearch }) {
   const [selectedTab, setSelectedTab] = useState("home");
@@ -68,10 +68,9 @@ function Navbar({ onSearch }) {
         <Tab icon={<SportsGymnasticsIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/sports"} label="Sports" />
         
         <Tab icon={<FastfoodIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/food"} label="Food" />
-
         
         
-        
+        <Tab icon={<CreateIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/events/create"} label="Create" />
         
         <form onSubmit={handleSearchSubmit} className="search-form">
         <input
@@ -84,7 +83,8 @@ function Navbar({ onSearch }) {
         <button type="submit" className="search-button">Search</button>
       </form>
       <Tab icon={<BeenhereIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/events/bookings"} label="Bookings" />
-      <Tab icon={<FavoriteBorderIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/favourites"} label="favourites" />
+      
+
       <Tab className= "logout" icon={<LogoutIcon />}
           classes={{ root: "tab" }}
           label="Logout"

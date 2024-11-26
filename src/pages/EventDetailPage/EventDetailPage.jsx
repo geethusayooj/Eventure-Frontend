@@ -31,7 +31,12 @@ function EventDetailPage() {
   // delete a event
   const deleteEvent = () => {
     axios
-      .delete(`${API_URL}/api/api/events/${eventId}`)
+      .delete(`${API_URL}/api/api/events/${eventId}` ,{
+        
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        }
+    } )
       .then((response) => {
         console.log("Event deleted successfully:", response.data);
         navigate("/home");
@@ -84,6 +89,9 @@ function EventDetailPage() {
   useEffect(() => {
     getEvent();
   }, [eventId]);
+
+ 
+  
   return (
     <div className="eventDetailPage">
       {event && Object.keys(event).length > 0 ? (
@@ -91,6 +99,8 @@ function EventDetailPage() {
           <img className="imageofevent" src={event.image} alt={event.title} />
           <div className="eventdetails">
             <h1>{event.title}</h1>
+           
+
             <p>{event.description}</p>
             <p>
               <strong>Category:</strong> {event.category}
@@ -158,6 +168,7 @@ function EventDetailPage() {
                 <Button className="detailpageButton" onClick={deleteEvent}>
                   Delete
                 </Button>
+                
               </ButtonGroup>
             </div>
           </div>

@@ -24,7 +24,7 @@
 .search-form {
   display: flex;
   align-items: center;
-  margin-left: 370px;
+  margin-left: 250px;
 }
 .logout-button {
   margin-left: 20px;
@@ -38,20 +38,4 @@
 
 .logout-button:hover {
   background-color: #ff7875;
-}
-.logout-button {
-  margin-left: 10px;
-  padding: 8px 16px;
-  background-color: #ff4d4f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-} 
-
-.logout-button:hover {
-  background-color: #ff7875;
-}  
-.logout{
-  margin-left: auto;
 }

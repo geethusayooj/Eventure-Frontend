@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
@@ -14,7 +13,8 @@ import EventListPage from "./pages/EventListPage/EventListPage";
 import EventDetailPage from "./pages/EventDetailPage/EventDetailPage";
 import CreateEventPage from "./pages/CreateEventPage/CreateEventPage";
 import EditEventPage from "./pages/EditEventPage/EditEventPage";
-import BookedInfoPage from "./pages/BookedInfoPage/BookedInfoPage"
+import BookedInfoPage from "./pages/BookedInfoPage/BookedInfoPage";
+import FavouritePage from "./components/favouritePage/favouritePage";
 
 
 function App() {
@@ -62,8 +62,7 @@ function App() {
           <Route path="/events/create" element={<CreateEventPage callbackToCreate={createEvents} />} />
           <Route path="/events/:eventId/edit" element={<EditEventPage />} />
           <Route path="/events/bookings" element={<BookedInfoPage />} />
-          <Route path="/favourites" element={<EventDetailPage />} />
-        
+          
       </Routes>
         
       </Router>

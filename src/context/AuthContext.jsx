@@ -18,7 +18,6 @@ export const AuthProviderWrapper = ({ children }) => {
         })
         .then((response) => {
           const user = response.data;
-
           setToken(storedToken);
           setUser(user);
           setIsAuthenticated(true);

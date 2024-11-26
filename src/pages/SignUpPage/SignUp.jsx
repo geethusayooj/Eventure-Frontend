@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import coverpageimage from "../../assets/coverpageimage.jpg"
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,15 @@ const Signup = () => {
 
   return (
     <div className="signupcontainer">
-      
+      <div className="loginLeft">
+      <div className="cover-image-container">
+        <img className="coverImage" src={coverpageimage} />
+        <div className="cover-text">
+        <h1>Welcome to Eventure!</h1>
+        <p> <em>Discover and book your favorite events with ease and and enjoy life’s best moments.</em></p>
+      </div>
+      </div>
+      </div>
       <form className = "signupform" onSubmit={handleSignup}>
       <h1>Signup</h1>
         <input className="inputsignup"

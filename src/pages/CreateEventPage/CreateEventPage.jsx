@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import EventDetailPage from "../EventDetailPage/EventDetailPage";
 import { API_URL } from "../../config/api";
 import "./CreateEventPage.css";
+import { AuthContext } from "../../context/AuthContext";
 
 function CreateEventPage(props) {
   const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ function CreateEventPage(props) {
   const [availableTickets, setAvailableTickets] = useState("");
 
   const navigate = useNavigate();
-
+  const { token } = useContext(AuthContext); 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +33,13 @@ function CreateEventPage(props) {
     };
 
     axios
-      .post(`${API_URL}/api/api/events`, newEvent)
+      .post(`${API_URL}/api/api/events`, newEvent,{
+        
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          }
+      })
+      
       .then((response) => {
       
         props.callbackToCreate(EventDetailPage);
