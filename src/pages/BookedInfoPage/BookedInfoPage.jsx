@@ -4,6 +4,7 @@ import { CircularProgress, Box, Button } from "@mui/material";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import "./BookedInfoPage.css";
+import { API_URL } from "../../config/api";
 
 const BookedInfoPage = () => {
   const [bookings, setBookings] = useState([]);
@@ -14,7 +15,7 @@ const BookedInfoPage = () => {
     setLoading(true);
     if (token) {
       axios
-        .get("/api/api/bookings", {
+        .get(`${API_URL}/api/bookings`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,7 +38,7 @@ const BookedInfoPage = () => {
   const deleteBooking = (bookingId) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       axios
-        .delete(`/api/api/bookings/${bookingId}`, {
+        .delete(`${API_URL}/api/bookings/${bookingId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
