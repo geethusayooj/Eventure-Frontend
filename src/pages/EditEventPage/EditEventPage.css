@@ -69,3 +69,11 @@
     border-radius: 5px;
     font-size: 18px;
   }
+ 
+  .error-message {
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  

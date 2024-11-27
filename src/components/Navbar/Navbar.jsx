@@ -14,6 +14,7 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import CreateIcon from '@mui/icons-material/Create';
 import LogoutIcon from '@mui/icons-material/Logout';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function Navbar({ onSearch }) {
@@ -73,15 +74,19 @@ function Navbar({ onSearch }) {
         <Tab icon={<CreateIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/events/create"} label="Create" />
         
         <form onSubmit={handleSearchSubmit} className="search-form">
-        <input
-          type="text"
-          placeholder="Search event here..."
-          value={searchInput}
-          onChange={handleInputChange}
-          className="search-input"
-        />
-        <button type="submit" className="search-button">Search</button>
-      </form>
+  <div className="search-container">
+    <SearchIcon className="search-icon" />
+    <input
+      type="text"
+      placeholder="Search event here..."
+      value={searchInput}
+      onChange={handleInputChange}
+      className="search-input"
+    />
+    <button type="submit" className="search-button">Search</button>
+  </div>
+</form>
+
       <Tab icon={<BeenhereIcon />} disableFocusRipple disableRipple classes={{ root: "tab" }} value={"/events/bookings"} label="Bookings" />
       
 

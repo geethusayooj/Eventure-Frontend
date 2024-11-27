@@ -12,8 +12,10 @@ body {
   text-align: center;
   height: 100vh;
   width: 100%;
-  align-items: center;
-  gap: 80px
+  align-items: flex-start;
+  gap: 80px;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
 .loginform {
@@ -21,16 +23,18 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px;
+  height: 100%;
 }
 
 .loginLeft h1 {
   font-size: 40px;
-  color: #333;
+  color: #131111;
   margin-bottom: 20px;
  
 }
 .loginLeft p{
-  font-size:20px
+  font-size:15px;
+  color: #0c0808;
 }
 
 .inputlogin {
@@ -68,7 +72,7 @@ body {
 /* Link Style for Signup */
 p {
   font-size: 16px;
-  color: #555;
+  color: #0c0808;
   text-align: center;
 }
 
@@ -83,7 +87,11 @@ a:hover {
 }
 
 .coverImage {
-  width: 100%;
+  width: 60vw;
   height: auto;
 }
 
+.eventListContainer{
+  display: flex;
+  
+}

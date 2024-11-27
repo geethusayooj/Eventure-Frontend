@@ -1,12 +1,13 @@
 
 .search-input {
-  padding: 5px;
+  padding-left: 35px; 
+  padding-right:0px;
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 .search-button {
-  padding: 5px 10px;
+  padding: 7px 10px;
   margin-left: 5px;
   background-color: #333;
   color: white;
@@ -24,7 +25,7 @@
 .search-form {
   display: flex;
   align-items: center;
-  margin-left: 250px;
+  margin-left: 340px;
 }
 .logout-button {
   margin-left: 20px;
@@ -38,4 +39,14 @@
 
 .logout-button:hover {
   background-color: #ff7875;
+}
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: gray;
+}
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }

@@ -9,7 +9,7 @@ import { API_URL } from "../../config/api";
 import { Link } from "react-router-dom";
 
 
-function EventListPage({ searchQuery }) {  
+function EventListPage({ searchQuery = '' }) {  
   const [events, setEvents] = useState([]);
 
   useEffect(() => {

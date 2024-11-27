@@ -30,6 +30,10 @@ function EventDetailPage() {
   };
   // delete a event
   const deleteEvent = () => {
+    if (!token) {
+      alert("You need to be logged in to delete this event.");
+      return;
+    }
     axios
       .delete(`${API_URL}/api/api/events/${eventId}` ,{
         
@@ -47,6 +51,10 @@ function EventDetailPage() {
   // book tickets
 
   const bookTickets = () => {
+    if (!token) {
+      alert("You need to be logged in to book tickets for this event.");
+      return;
+    }
     if (quantity <= 0 || quantity > event.availableTickets) {
       alert(
         "Please enter a valid quantity. Tickets available: " +

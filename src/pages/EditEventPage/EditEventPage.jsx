@@ -13,6 +13,7 @@ function EditEventPage() {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
   const [date, setDate] = useState("");
   const [availableTickets, setAvailableTickets] = useState("");
   const { token } = useContext(AuthContext);
@@ -20,6 +21,13 @@ function EditEventPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+    if (!token) {
+      setError("You need to be logged in to edit this event.");
+      setTimeout(() => navigate("/"), 3000); 
+      return;
+    }
+
     axios
       .get(`${API_URL}/api/api/events/${eventId}`)
       .then((response) => {
@@ -31,6 +39,7 @@ function EditEventPage() {
         setLocation(response.data.location);
         setDate(response.data.date);
         setAvailableTickets(response.data.availableTickets)
+        
       })
       .catch((error) =>
         console.log("Error getting edit details from the API...", error)
@@ -39,7 +48,10 @@ function EditEventPage() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-   
+    if (!token) {
+      setError("You need to be logged in to edit this event.");
+      return;
+    }
     const newDetails = {
       title: title,
       price: price,
@@ -152,7 +164,7 @@ function EditEventPage() {
         </div>
 
         <button className= "editbutton" type="submit">Edit</button>
-        
+        {error && <div className="error-message">{error}</div>}
       </form>
     </div>
   );

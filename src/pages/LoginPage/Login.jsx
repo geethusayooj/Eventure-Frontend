@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import EventListPage from "../EventListPage/EventListPage";
 import "./Login.css";
 import coverpageimage from "../../assets/coverpageimage.jpg"
 
@@ -42,7 +43,7 @@ const Login = () => {
 
   return (
     
-
+<>
 <div className="loginContainer">
 
       <div className="loginLeft">
@@ -85,7 +86,15 @@ const Login = () => {
           </p>
         </div>
       </div>
+      
     </div>
+    <div className="eventListContainer">
+    <EventListPage /> 
+  </div>
+</>
+
+    
+    
   );
 };
 
