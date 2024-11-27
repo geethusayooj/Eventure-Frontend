@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import EventListPage from "../EventListPage/EventListPage";
 import "./Login.css";
 import coverpageimage from "../../assets/coverpageimage.jpg";
+import { API_URL } from "../../config/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

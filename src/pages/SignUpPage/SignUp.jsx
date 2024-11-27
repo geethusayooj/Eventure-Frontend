@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import coverpageimage from "../../assets/coverpageimage.jpg";
+import { API_URL } from "../../config/api";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Signup = () => {
 
     try {
       // Send signup request to backend
-      const response = await fetch("/api/auth/signup", {
+      const response = await fetch(`${API_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, name }),
