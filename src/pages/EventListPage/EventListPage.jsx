@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function EventListPage({ searchQuery = "" }) {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true);
@@ -31,52 +31,49 @@ function EventListPage({ searchQuery = "" }) {
   return (
     <>
       <div className="EventListPage card-list">
-        {!loading &&
-          events &&
-          events.length >
-            0(
-              events
-                .filter(
-                  (event) =>
-                    event.title &&
-                    event.title
-                      .toLowerCase()
-                      .includes(searchQuery.toLowerCase())
-                )
-                .map((eventDetails) => {
-                  return (
-                    <Link className="link" to={`/events/${eventDetails._id}`}>
-                      <Card
-                        key={eventDetails._id}
-                        sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
+        {!loading && events && events.length > 0 && (
+          events
+            .filter(
+              (event) =>
+                event.title &&
+                event.title.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+            .map((eventDetails) => {
+              return (
+                <Link className="link" to={`/events/${eventDetails._id}`}>
+                  <Card
+                    key={eventDetails._id}
+                    sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
+                  >
+                    <CardMedia
+                      sx={{ height: 250, backgroundSize: "contain" }}
+                      image={eventDetails.image}
+                      title={eventDetails.title}
+                    />
+                    <CardContent>
+                      <Typography
+                        className="cardsize"
+                        gutterBottom
+                        variant="h5"
+                        component="div"
                       >
-                        <CardMedia
-                          sx={{ height: 250, backgroundSize: "contain" }}
-                          image={eventDetails.image}
-                          title={eventDetails.title}
-                        />
-                        <CardContent>
-                          <Typography
-                            className="cardsize"
-                            gutterBottom
-                            variant="h5"
-                            component="div"
-                          >
-                            {eventDetails.title}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{ color: "text.secondary" }}
-                          >
-                            {eventDetails.location}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })
-            )}
-        {!loading && events && events.length === 0 && <p>No events found.</p>}
+                        {eventDetails.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: "text.secondary" }}
+                      >
+                        {eventDetails.location}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })
+        )}
+        { !loading && events && events.length === 0 &&
+           <p>No events found.</p>
+        }
       </div>
     </>
   );
