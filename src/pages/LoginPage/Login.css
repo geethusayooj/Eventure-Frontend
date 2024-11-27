@@ -30,10 +30,9 @@ body {
   font-size: 40px;
   color: #131111;
   margin-bottom: 20px;
- 
 }
-.loginLeft p{
-  font-size:15px;
+.loginLeft p {
+  font-size: 15px;
   color: #0c0808;
 }
 
@@ -69,7 +68,6 @@ body {
   background-color: #45a049;
 }
 
-/* Link Style for Signup */
 p {
   font-size: 16px;
   color: #0c0808;
@@ -91,7 +89,6 @@ a:hover {
   height: auto;
 }
 
-.eventListContainer{
+.eventListContainer {
   display: flex;
-  
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
-import coverpageimage from "../../assets/coverpageimage.jpg"
+import coverpageimage from "../../assets/coverpageimage.jpg";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -37,17 +37,24 @@ const Signup = () => {
   return (
     <div className="signupcontainer">
       <div className="loginLeft">
-      <div className="cover-image-container">
-        <img className="coverImage" src={coverpageimage} />
-        <div className="cover-text">
-        <h1>Welcome to Eventure!</h1>
-        <p> <em>Discover and book your favorite events with ease and and enjoy life’s best moments.</em></p>
+        <div className="cover-image-container">
+          <img className="coverImage" src={coverpageimage} />
+          <div className="cover-text">
+            <h1>Welcome to Eventure!</h1>
+            <p>
+              {" "}
+              <em>
+                Discover and book your favorite events with ease and and enjoy
+                life’s best moments.
+              </em>
+            </p>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-      <form className = "signupform" onSubmit={handleSignup}>
-      <h1>Signup</h1>
-        <input className="inputsignup"
+      <form className="signupform" onSubmit={handleSignup}>
+        <h1>Signup</h1>
+        <input
+          className="inputsignup"
           type="text"
           placeholder="Name"
           value={name}
@@ -55,7 +62,8 @@ const Signup = () => {
           required
         />
         <br />
-        <input className="inputsignup"
+        <input
+          className="inputsignup"
           type="email"
           placeholder="Email"
           value={email}
@@ -63,7 +71,8 @@ const Signup = () => {
           required
         />{" "}
         <br />
-        <input className="inputsignup"
+        <input
+          className="inputsignup"
           type="password"
           placeholder="Password"
           value={password}
@@ -71,12 +80,13 @@ const Signup = () => {
           required
         />
         <br />
-        <button className="signupbutton" type="submit">Signup</button>
+        <button className="signupbutton" type="submit">
+          Signup
+        </button>
         <p>
-        Already have an account? <a href="/">Login</a>
-      </p>
+          Already have an account? <a href="/">Login</a>
+        </p>
       </form>
-      
     </div>
   );
 };

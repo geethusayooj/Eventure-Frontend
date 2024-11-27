@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
-
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -15,45 +14,45 @@ function EventsByCategory({ category }) {
     axios
       .get(`${API_URL}/api/api/events/category/${category}`)
       .then((response) => {
-       console.log("API response:", response.data);
-        
-        const filteredData = response.data.filter((event) => event.category === category);
+        console.log("API response:", response.data);
+
+        const filteredData = response.data.filter(
+          (event) => event.category === category
+        );
         console.log(filteredData);
         setEvents(filteredData.toReversed());
       })
       .catch((e) => console.log("Error getting events from the API...", e));
     return () => {
-        setEvents([]);
+      setEvents([]);
     };
   }, [category]);
   return (
-   
     <div className="EventsByCategory card-list">
-     
-     {events && events.length > 0 ? (
+      {events && events.length > 0 ? (
         events.map((eventDetails) => {
           return (
-
             <Link className="link" to={`/events/${eventDetails._id}`}>
-
-            <Card
-              key={eventDetails._id}
-              // sx={{ maxWidth: 375, minWidth: 375, borderRadius: 7 }}
-            >
-              <CardMedia
-                sx={{ height: 250, backgroundSize: "contain" }}
-                image={eventDetails.image}
-                title={eventDetails.title}
-              />
-              <CardContent>
-                <Typography className="cardsize" gutterBottom variant="h5" component="div">
-                  {eventDetails.title}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {eventDetails.location}
-                </Typography>
-              </CardContent>
-            </Card>
+              <Card key={eventDetails._id}>
+                <CardMedia
+                  sx={{ height: 250, backgroundSize: "contain" }}
+                  image={eventDetails.image}
+                  title={eventDetails.title}
+                />
+                <CardContent>
+                  <Typography
+                    className="cardsize"
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                  >
+                    {eventDetails.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                    {eventDetails.location}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Link>
           );
         })

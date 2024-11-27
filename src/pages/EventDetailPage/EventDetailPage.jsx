@@ -14,7 +14,7 @@ function EventDetailPage() {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-  const { token, user } = useContext(AuthContext)
+  const { token, user } = useContext(AuthContext);
 
   const getEvent = () => {
     axios
@@ -35,12 +35,11 @@ function EventDetailPage() {
       return;
     }
     axios
-      .delete(`${API_URL}/api/api/events/${eventId}` ,{
-        
+      .delete(`${API_URL}/api/api/events/${eventId}`, {
         headers: {
-          Authorization: `Bearer ${token}`, 
-        }
-    } )
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log("Event deleted successfully:", response.data);
         navigate("/home");
@@ -80,14 +79,14 @@ function EventDetailPage() {
         alert("Booking successful!");
         setQuantity(1);
         setTotalPrice(event.price);
-      // Reduce available tickets locally
-      getEvent();
-    })
-    .catch((error) => {
-      console.error("Error booking tickets:", error);
-      alert(error.response?.data?.error || "Booking failed.");
-    });
-};
+        // Reduce available tickets locally
+        getEvent();
+      })
+      .catch((error) => {
+        console.error("Error booking tickets:", error);
+        alert(error.response?.data?.error || "Booking failed.");
+      });
+  };
   // Update totalPrice whenever quantity changes
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
@@ -98,86 +97,80 @@ function EventDetailPage() {
     getEvent();
   }, [eventId]);
 
- 
-  
   return (
     <div className="eventDetailPage">
       {event && Object.keys(event).length > 0 ? (
         <>
-          <img className="imageofevent" src={event.image} alt={event.title} />
-          <div className="eventdetails">
-            <h1>{event.title}</h1>
-           
+          <div className="eventpage">
+            
+            <div className="eventDetailsBox">
+            <img className="imageofevent" src={event.image} alt={event.title} />
+              <h1>{event.title}</h1>
 
-            <p>{event.description}</p>
-            <p>
-              <strong>Category:</strong> {event.category}
-            </p>
-            <p>
-              <strong>Date:</strong> {new Date(event.date).toLocaleString()}
-            </p>
-            <p>
-              <strong>Location:</strong> {event.location}
-            </p>
-            <p>
-              <strong>Price:</strong> ${event.price}
-            </p>
-            <p>
-              <strong>Available Tickets:</strong> {event.availableTickets}
-            </p>
+              <p>{event.description}</p>
+              
+              <p>
+                <strong>Date:</strong> {new Date(event.date).toLocaleString()}
+              </p>
+              <p>
+                <strong>Location:</strong> {event.location}
+              </p>
+              <p>
+                <strong>Price:</strong> ${event.price}
+              </p>
+              <p>
+                <strong>Available Tickets:</strong> {event.availableTickets}
+              </p>
+              <div className="bookingBox">
+                <h2>Don’t Miss Out! Book Now</h2>
+                <div className="bookNowFields">
+                  <TextField
+                    type="number"
+                    label="Quantity"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                    inputProps={{
+                      min: 1,
+                      max: event.availableTickets,
+                      style: { textAlign: "center" },
+                    }}
+                    style={{
+                      marginRight: "1rem",
+                      width: "70px",
+                      height: "40px",
+                    }}
+                  />
+                  <div className="totalPrice">
+                    <strong>Total Price: </strong> ${totalPrice.toFixed(2)}
+                  </div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={bookTickets}
+                    disabled={
+                      event.availableTickets === 0 ||
+                      quantity <= 0 ||
+                      quantity > event.availableTickets
+                    }
+                  >
+                    Book Now
+                  </Button>
+                </div>
+              </div>
+              <div className="buttonDetailpage">
+                <ButtonGroup variant="outlined" aria-label="Basic button group">
+                  <Link to="/home">
+                    <Button className="detailpageButton">Back </Button>
+                  </Link>
+                  <Link to={`/events/${eventId}/edit`}>
+                    <Button className="detailpageButton">Edit</Button>
+                  </Link>
 
-            <div className="bookingBox">
-  <h2>Don’t Miss Out! Book Now</h2>
-  <div className="bookNowFields">
-    <TextField
-      type="number"
-      label="Quantity"
-      value={quantity}
-      onChange={handleQuantityChange}
-      inputProps={{
-        min: 1,
-        max: event.availableTickets,
-        style: { textAlign: "center" },
-      }}
-      style={{
-        marginRight: "1rem",
-        width: "70px",
-        height: "40px",
-      }}
-    />
-    <div className="totalPrice">
-      <strong>Total Price: </strong> ${totalPrice.toFixed(2)}
-    </div>
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={bookTickets}
-      disabled={
-        event.availableTickets === 0 ||
-        quantity <= 0 ||
-        quantity > event.availableTickets
-      }
-    >
-      Book Now
-    </Button>
-  </div>
-</div>
-
-
-            <div className="buttonDetailpage">
-              <ButtonGroup variant="outlined" aria-label="Basic button group">
-                <Link to="/home">
-                  <Button className="detailpageButton">Back </Button>
-                </Link>
-                <Link to={`/events/${eventId}/edit`}>
-                  <Button className="detailpageButton">Edit</Button>
-                </Link>
-
-                <Button className="detailpageButton" onClick={deleteEvent}>
-                  Delete
-                </Button>
-                
-              </ButtonGroup>
+                  <Button className="detailpageButton" onClick={deleteEvent}>
+                    Delete
+                  </Button>
+                </ButtonGroup>
+              </div>
             </div>
           </div>
         </>

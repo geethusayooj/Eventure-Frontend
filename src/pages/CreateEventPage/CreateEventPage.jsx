@@ -17,7 +17,7 @@ function CreateEventPage(props) {
   const [availableTickets, setAvailableTickets] = useState("");
 
   const navigate = useNavigate();
-  const { token } = useContext(AuthContext); 
+  const { token } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -33,15 +33,13 @@ function CreateEventPage(props) {
     };
 
     axios
-      .post(`${API_URL}/api/api/events`, newEvent,{
-        
-          headers: {
-            Authorization: `Bearer ${token}`, 
-          }
+      .post(`${API_URL}/api/api/events`, newEvent, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      
+
       .then((response) => {
-      
         props.callbackToCreate(EventDetailPage);
 
         navigate("/home");
@@ -161,7 +159,9 @@ function CreateEventPage(props) {
           />
         </div>
 
-        <button className="createbutton" type="submit">Create</button>
+        <button className="createbutton" type="submit">
+          Create
+        </button>
       </form>
     </div>
   );

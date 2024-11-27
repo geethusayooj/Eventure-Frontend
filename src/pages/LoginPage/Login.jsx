@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import EventListPage from "../EventListPage/EventListPage";
 import "./Login.css";
-import coverpageimage from "../../assets/coverpageimage.jpg"
+import coverpageimage from "../../assets/coverpageimage.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,9 +26,9 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem("authToken", data.authToken); // Store token
         authenticateUser();
-        setEmail(""); 
-        setPassword(""); 
-        navigate("/home"); 
+        setEmail("");
+        setPassword("");
+        navigate("/home");
       } else {
         alert(data.message || "Invalid credentials");
       }
@@ -42,59 +42,59 @@ const Login = () => {
   };
 
   return (
-    
-<>
-<div className="loginContainer">
-
-      <div className="loginLeft">
-      <div className="cover-image-container">
-        <img className="coverImage" src={coverpageimage} />
-        <div className="cover-text">
-        <h1>Welcome to Eventure!</h1>
-        <p> <em>Discover and book your favorite events with ease and and enjoy life’s best moments.</em></p>
-      </div>
-      </div>
-      </div>
-      <div className="loginRight">
-        <div className="loginform">
-          <h1>Login</h1>
-          <form onSubmit={handleLogin}>
-            <input
-              className="inputlogin"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <br />
-            <input
-              className="inputlogin"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <br />
-            <button className="loginbutton" type="submit">
-              Login
-            </button>
-          </form>
-          <p>
-            Don't have an account? <a href="/signup">Signup</a>
-          </p>
+    <>
+      <div className="loginContainer">
+        <div className="loginLeft">
+          <div className="cover-image-container">
+            <img className="coverImage" src={coverpageimage} />
+            <div className="cover-text">
+              <h1>Welcome to Eventure!</h1>
+              <p>
+                {" "}
+                <em>
+                  Discover and book your favorite events with ease and and enjoy
+                  best moments.
+                </em>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="loginRight">
+          <div className="loginform">
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+              <input
+                className="inputlogin"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <br />
+              <input
+                className="inputlogin"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <br />
+              <button className="loginbutton" type="submit">
+                Login
+              </button>
+            </form>
+            <p>
+              Don't have an account? <a href="/signup">Signup</a>
+            </p>
+          </div>
         </div>
       </div>
-      
-    </div>
-    <div className="eventListContainer">
-    <EventListPage /> 
-  </div>
-</>
-
-    
-    
+      <div className="eventListContainer">
+        <EventListPage />
+      </div>
+    </>
   );
 };
 

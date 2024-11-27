@@ -38,7 +38,7 @@ export const AuthProviderWrapper = ({ children }) => {
     setUser({});
     setToken(null);
     setIsAuthenticated(false);
-    localStorage.removeItem("authToken"); // Remove token from localStorage
+    localStorage.removeItem("authToken");
   };
 
   useEffect(() => {

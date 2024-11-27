@@ -5,7 +5,6 @@ import "./EditEventPage.css";
 import { API_URL } from "../../config/api";
 import { AuthContext } from "../../context/AuthContext";
 
-
 function EditEventPage() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -21,10 +20,9 @@ function EditEventPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     if (!token) {
       setError("You need to be logged in to edit this event.");
-      setTimeout(() => navigate("/"), 3000); 
+      setTimeout(() => navigate("/"), 3000);
       return;
     }
 
@@ -38,8 +36,7 @@ function EditEventPage() {
         setImage(response.data.image);
         setLocation(response.data.location);
         setDate(response.data.date);
-        setAvailableTickets(response.data.availableTickets)
-        
+        setAvailableTickets(response.data.availableTickets);
       })
       .catch((error) =>
         console.log("Error getting edit details from the API...", error)
@@ -60,16 +57,15 @@ function EditEventPage() {
       image: image,
       location: location,
       date: date,
-      availableTickets: availableTickets
+      availableTickets: availableTickets,
     };
 
-    axios.put(`${API_URL}/api/api/events/${eventId}`, newDetails, {
-        
-      headers: {
-        Authorization: `Bearer ${token}`, 
-      }
-  })
-
+    axios
+      .put(`${API_URL}/api/api/events/${eventId}`, newDetails, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
       .then((response) => {
         navigate(-1);
@@ -139,7 +135,6 @@ function EditEventPage() {
             onChange={(e) => setImage(e.target.value)}
           />
         </div>
-        
 
         <div class="form-group">
           <label>Location:</label>
@@ -163,7 +158,9 @@ function EditEventPage() {
           />
         </div>
 
-        <button className= "editbutton" type="submit">Edit</button>
+        <button className="editbutton" type="submit">
+          Edit
+        </button>
         {error && <div className="error-message">{error}</div>}
       </form>
     </div>
