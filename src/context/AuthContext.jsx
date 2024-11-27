@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../config/api";
 
 export const AuthContext = createContext();
 
@@ -13,7 +14,7 @@ export const AuthProviderWrapper = ({ children }) => {
 
     if (storedToken) {
       axios
-        .get(`/api/auth/verify`, {
+        .get(`${API_URL}/auth/verify`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
