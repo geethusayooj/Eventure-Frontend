@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 
 function EventListPage({ searchQuery = "" }) {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${API_URL}/api/events`)
       .then((response) => {
@@ -19,54 +21,62 @@ function EventListPage({ searchQuery = "" }) {
           ? response.data
           : Object.values(response.data);
         setEvents(eventArray);
+        setLoading(false);
       })
-      .catch((e) => console.log("Error getting events from the API...", e));
+      .catch((e) => {
+        console.log("Error getting events from the API...", e);
+        setLoading(false);
+      });
   }, []);
   return (
     <>
       <div className="EventListPage card-list">
-        {events && events.length > 0 ? (
-          events
-            .filter(
-              (event) =>
-                event.title &&
-                event.title.toLowerCase().includes(searchQuery.toLowerCase())
-            )
-            .map((eventDetails) => {
-              return (
-                <Link className="link" to={`/events/${eventDetails._id}`}>
-                  <Card
-                    key={eventDetails._id}
-                    sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
-                  >
-                    <CardMedia
-                      sx={{ height: 250, backgroundSize: "contain" }}
-                      image={eventDetails.image}
-                      title={eventDetails.title}
-                    />
-                    <CardContent>
-                      <Typography
-                        className="cardsize"
-                        gutterBottom
-                        variant="h5"
-                        component="div"
+        {!loading &&
+          events &&
+          events.length >
+            0(
+              events
+                .filter(
+                  (event) =>
+                    event.title &&
+                    event.title
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase())
+                )
+                .map((eventDetails) => {
+                  return (
+                    <Link className="link" to={`/events/${eventDetails._id}`}>
+                      <Card
+                        key={eventDetails._id}
+                        sx={{ maxWidth: 300, minWidth: 300, borderRadius: 5 }}
                       >
-                        {eventDetails.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "text.secondary" }}
-                      >
-                        {eventDetails.location}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Link>
-              );
-            })
-        ) : (
-          <p>No events found.</p>
-        )}
+                        <CardMedia
+                          sx={{ height: 250, backgroundSize: "contain" }}
+                          image={eventDetails.image}
+                          title={eventDetails.title}
+                        />
+                        <CardContent>
+                          <Typography
+                            className="cardsize"
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                          >
+                            {eventDetails.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{ color: "text.secondary" }}
+                          >
+                            {eventDetails.location}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })
+            )}
+        {!loading && events && events.length === 0 && <p>No events found.</p>}
       </div>
     </>
   );
