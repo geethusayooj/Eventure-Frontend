@@ -13,7 +13,7 @@ function EventListPage({ searchQuery = "" }) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/api/events`)
+      .get(`${API_URL}/api/events`)
       .then((response) => {
         const eventArray = Array.isArray(response.data)
           ? response.data

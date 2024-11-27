@@ -18,7 +18,7 @@ function EventDetailPage() {
 
   const getEvent = () => {
     axios
-      .get(`${API_URL}/api/api/events/${eventId}`)
+      .get(`${API_URL}/api/events/${eventId}`)
       .then((response) => {
         console.log(response.data);
         setEvent(response.data);
@@ -35,7 +35,7 @@ function EventDetailPage() {
       return;
     }
     axios
-      .delete(`${API_URL}/api/api/events/${eventId}`, {
+      .delete(`${API_URL}/api/events/${eventId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -67,7 +67,7 @@ function EventDetailPage() {
 
     axios
       .post(
-        `${API_URL}/api/api/bookings`,
+        `${API_URL}/api/bookings`,
         {
           userId: user._id,
           eventId: event._id,

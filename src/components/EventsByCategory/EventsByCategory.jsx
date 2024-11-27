@@ -12,7 +12,7 @@ function EventsByCategory({ category }) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/api/events/category/${category}`)
+      .get(`${API_URL}/api/events/category/${category}`)
       .then((response) => {
         console.log("API response:", response.data);
 

@@ -27,7 +27,7 @@ function EditEventPage() {
     }
 
     axios
-      .get(`${API_URL}/api/api/events/${eventId}`)
+      .get(`${API_URL}/api/events/${eventId}`)
       .then((response) => {
         setTitle(response.data.title);
         setPrice(response.data.price);
@@ -61,7 +61,7 @@ function EditEventPage() {
     };
 
     axios
-      .put(`${API_URL}/api/api/events/${eventId}`, newDetails, {
+      .put(`${API_URL}/api/events/${eventId}`, newDetails, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

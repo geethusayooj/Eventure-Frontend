@@ -33,7 +33,7 @@ function CreateEventPage(props) {
     };
 
     axios
-      .post(`${API_URL}/api/api/events`, newEvent, {
+      .post(`${API_URL}/api/events`, newEvent, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
