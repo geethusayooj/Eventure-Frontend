@@ -9,8 +9,10 @@ import { API_URL } from "../../config/api";
 import { Link } from "react-router-dom";
 function EventsByCategory({ category }) {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${API_URL}/api/events/category/${category}`)
       .then((response) => {
@@ -21,15 +23,17 @@ function EventsByCategory({ category }) {
         );
         console.log(filteredData);
         setEvents(filteredData.toReversed());
+        setLoading(false);
       })
       .catch((e) => console.log("Error getting events from the API...", e));
     return () => {
       setEvents([]);
+      setLoading(false);
     };
   }, [category]);
   return (
     <div className="EventsByCategory card-list">
-      {events && events.length > 0 ? (
+      { !loading && events && events.length > 0 && (
         events.map((eventDetails) => {
           return (
             <Link className="link" to={`/events/${eventDetails._id}`}>
@@ -56,9 +60,12 @@ function EventsByCategory({ category }) {
             </Link>
           );
         })
-      ) : (
-        <Typography>No events found for this category</Typography>
       )}
+      {
+        !loading && events.length === 0 && (
+          <Typography>No events found for this category</Typography>
+        )
+      }
     </div>
   );
 }
